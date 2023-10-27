@@ -5,8 +5,10 @@ print(arr)
 
 
 def merge_sort(array):
-    print(array)
-
+    if(len(array)==0):
+        return
+    
+    
 
 
 
