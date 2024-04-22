@@ -68,7 +68,7 @@ def next_nearest_smaller_element_from_left(v):
     for item in v:
         top = stack[-1]
 
-        if item < top:
+        while item < top:
             stack.pop()
             top = stack[-1]
 
