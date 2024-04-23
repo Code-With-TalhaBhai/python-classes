@@ -10,7 +10,7 @@ class Queue:
     def pop(self):
         return self.queue.pop()
 
-    def peek(self):
+    def peek(self):#front
         return self.queue[-1]
 
     def empty(self):
