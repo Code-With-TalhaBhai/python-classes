@@ -4,15 +4,14 @@
 
 def prev_smaller(heights):
     same_heights = heights.copy()
-    # same_heights.copy(heights)
-    stack = []
+    stack = [-1]
     for index,items in enumerate(same_heights):
         start = index
-        while stack and same_heights[stack[-1]] >= items:
+        while stack[-1] != -1 and same_heights[stack[-1]] > items:
             # print('entering,pop')
             stack.pop()
         
-        if stack and same_heights[stack[-1]] <= items:
+        if stack[-1] != -1 and same_heights[stack[-1]] <= items:
             # print('entering,push')
             start = stack[-1]
             
