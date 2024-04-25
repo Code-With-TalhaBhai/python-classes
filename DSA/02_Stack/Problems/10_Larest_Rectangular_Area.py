@@ -34,23 +34,23 @@ def next_smaller(v):
     return ans_v
 
 
-# def largest_area_histogram(v):
+def largest_area_histogram(v):
 
-#     max = -1
-#     next_smaller_arr = next_smaller(v)
-#     prev_smaller_arr = prev_smaller(v)
-#     print(next_smaller_arr)
-#     print(prev_smaller_arr)
-#     for index,height in enumerate(v):
-#         width = next_smaller_arr[index] - prev_smaller_arr[index] - 1
-#         area = width * height
-#         if(area>max):
-#             max = area
-#     return max
+    max = -1
+    next_smaller_arr = next_smaller(v)
+    prev_smaller_arr = prev_smaller(v)
+    print(next_smaller_arr)
+    print(prev_smaller_arr)
+    for index,height in enumerate(v):
+        width = next_smaller_arr[index] - prev_smaller_arr[index] - 1
+        area = width * height
+        if(area>max):
+            max = area
+    return max
 
 
 
-def largest_area_histogram(heights):
+def largest_area_histogram1(heights):
     maxArea = 0
     stack = []
 
@@ -63,9 +63,8 @@ def largest_area_histogram(heights):
         stack.append((start,h))
 
     for i,h in stack:
-        print("i is: ",i,"h is",h)
+        # print("i is: ",i,"h is",h)
         maxArea = max(maxArea, h*(len(heights)-i))
-        # return maxArea
     return maxArea
     
 
@@ -79,4 +78,4 @@ histogram = [999,999,999,999]
 
 
 
-print(largest_area_histogram(histogram))
+print(largest_area_histogram1(histogram))

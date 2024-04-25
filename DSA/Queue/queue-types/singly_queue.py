@@ -1,13 +1,15 @@
 
+
 class Node:
     def __init__(self,data):
         self.data = data
         self.next = None
 
+
+
 class Queue:
     def __init__(self) -> None:
-        self.front = self.rear  = None
-        # self.rear : Node | None = Node(35)
+        self.front = self.rear = None
 
 
     def enqueue(self,data):
@@ -15,7 +17,7 @@ class Queue:
         if self.rear == None:
             self.rear = self.front = temp
 
-        self.rear.next = temp
+        self.rear.next = temp # type:ignore
         self.rear = temp
 
     def dequeue(self):
@@ -23,7 +25,7 @@ class Queue:
             print("Queue is empty")
             return
 
-        self.front = self.front.next
+        self.front = self.front.next # type:ignore
         if(self.front == None):
             self.rear = None
 
@@ -36,7 +38,7 @@ class Queue:
         if(self.empty()):
             print("Queue is empty")
             return
-        print(self.front.data)
+        print(self.front.data) # type:ignore
 
 
 

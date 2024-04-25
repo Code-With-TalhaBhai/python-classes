@@ -55,5 +55,15 @@ if __name__ == "__main__":
     queue.enqueue(5)
     queue.print_queue()
     queue.enqueue(6)
+    print("Before popping")
     queue.queue_front()
     queue.queue_rear()
+
+
+    print("AFter popping")
+    queue.dequeue()
+    # queue.dequeue()
+    # queue.dequeue()
+    queue.queue_front()
+    queue.queue_rear()
+    # queue.print_queue()
