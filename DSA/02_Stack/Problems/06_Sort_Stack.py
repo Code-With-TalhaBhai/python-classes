@@ -33,18 +33,30 @@ class Stack:
         self.append(top)
 
     def sort_stack(self):
-        ...
+        # if len(self.__container)<=1:
+        #     return
+        if not self.__container:
+            return
+        
+        value = self.__container.pop()
+        self.sort_stack()
+        if(self.__container and value < self.__container[0]):
+            self.insertAtBottom(value)
+        else:
+            self.append(value)
+        print(self.__container)
     
                 
 
 
 s = Stack()
 
-s.append(0)
-s.append(1)
 s.append(2)
-s.append(3)
+s.append(0)
 s.append(4)
+s.insertAtBottom(23)
+s.append(1)
+s.append(3)
 
 s.print_stack()
 s.sort_stack()

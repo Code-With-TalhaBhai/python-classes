@@ -5,13 +5,11 @@ def prev_smaller(v):
 
     for index,item in enumerate(v):
 
-        index_to_insert = index-1
-        while item <= stack[-1]:
+        while stack[-1] != -1 and item <= v[stack[-1]]:
             stack.pop()   
-            index_to_insert = index_to_insert - 1 
         
-        ans_v[index] = index_to_insert
-        stack.append(item)
+        ans_v[index] = stack[-1]
+        stack.append(index)
     return ans_v
 
 
@@ -21,26 +19,28 @@ def next_smaller(v):
     index = len(v)
 
     for item in reversed(v):
-        index_to_insert = index
         index = index - 1
         
-        while item <= stack[-1]:
+        while stack[-1] != -1 and item <= v[stack[-1]]:
             stack.pop()
-            index_to_insert = index_to_insert + 1
         
-        ans_v[index] = index_to_insert
-        stack.append(item)
+        ans_v[index] = stack[-1]
+        stack.append(index)
 
     return ans_v
 
 
-def largest_area_histogram(v):
+def largest_area_histogram1(v):
 
     max = -1
-    next_smaller_arr = next_smaller(v)
     prev_smaller_arr = prev_smaller(v)
-    print(next_smaller_arr)
-    print(prev_smaller_arr)
+    next_smaller_arr = next_smaller(v)
+    # print(next_smaller_arr)
+    # print(prev_smaller_arr)
+    for _ in range(len(next_smaller_arr)):
+        if next_smaller_arr[_] == -1:
+            next_smaller_arr[_] = len(next_smaller_arr)
+
     for index,height in enumerate(v):
         width = next_smaller_arr[index] - prev_smaller_arr[index] - 1
         area = width * height
@@ -50,7 +50,7 @@ def largest_area_histogram(v):
 
 
 
-def largest_area_histogram1(heights):
+def largest_area_histogram2(heights):
     maxArea = 0
     stack = []
 
@@ -74,8 +74,10 @@ def largest_area_histogram1(heights):
 # histogram = [2,1,5,6,2,3]
 # histogram = [2,2,5,6,2,3]
 # histogram = [1,1]
-histogram = [999,999,999,999]
+# histogram = [999,999,999,999]
+histogram = [3, 1, 3, 2, 2]
 
 
 
 print(largest_area_histogram1(histogram))
+print(largest_area_histogram2(histogram)) # optimised

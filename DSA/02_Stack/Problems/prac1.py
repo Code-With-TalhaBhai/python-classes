@@ -7,45 +7,30 @@ def prev_smaller(heights):
     stack = [-1]
     for index,items in enumerate(same_heights):
         start = index
-        while stack[-1] != -1 and same_heights[stack[-1]] > items:
-            # print('entering,pop')
-            stack.pop()
+        while stack[-1] != -1 and same_heights[stack[-1]] >= items:
+            stack.pop()           
         
-        if stack[-1] != -1 and same_heights[stack[-1]] <= items:
-            # print('entering,push')
-            start = stack[-1]
-            
-        
-        stack.append(start)
         heights[index] = stack[-1]
-        # return same_heights
-        # print(heights[stack[-1]])
-        # print(stack)
+        stack.append(index)
 
 
 
 def next_smaller(heights):
     same_heights = heights.copy()
-    stack = []
+    stack = [-1]
     index = len(heights)
     
     for items in reversed(heights):
         index = index - 1
-        start = index
-        # print(index)
-        
-        while stack and same_heights[stack[-1]] >= items:
+    
+        while stack[-1] != -1 and same_heights[stack[-1]] >= items:
             stack.pop()
-        
-        if stack and same_heights[stack[-1]] <= items:
-            start = stack[-1]
             
-        stack.append(start)
         heights[index] = stack[-1]
+        stack.append(index)
 
 
 
-# histogram = [2,1,5,6,2,3] # [0,1,1,1,1,1]
 histogram = [999,999,999,999]
 prev_smaller(histogram)
 print(histogram)
@@ -53,5 +38,5 @@ print(histogram)
 histogram = [999,999,999,999]
 print(histogram)
 
-next_smaller(histogram) # [1,1,4,4,4,5]
+next_smaller(histogram)
 print(histogram)
