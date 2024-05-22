@@ -23,7 +23,9 @@ class Node:
     def printTree(self):
         if self.left:
             self.left.printTree()
+
         print(self.data)
+        
         if self.right:
             self.right.printTree()
 

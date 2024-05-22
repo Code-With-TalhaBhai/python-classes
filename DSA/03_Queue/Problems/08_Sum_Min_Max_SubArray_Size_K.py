@@ -7,59 +7,21 @@ def Sum_Min_Max_K(arr,k):
     min_q = deque()
     max_q = deque()
 
-    min_q.append(0)
-    max_q.append(0)
+    for i in range(k):
 
-    for i in range(1,k):
-        if arr[min_q[0]] > arr[i]:
-            min_q[0] = i
-
-        if arr[max_q[0]] < arr[i]:
-            max_q[0] = i
-
-
-    sum = arr[min_q[0]] + arr[max_q[0]]
-    # print(min_q)
-    # print(max_q)
-    print('min',arr[min_q[0]],' max',arr[max_q[0]])
-    print('sum',sum)
-
-    for j in range(k,N):
-        if (len(min_q) > 0 and j - min_q[0] == k):
-            print("entering min double")
+        while (len(min_q) > 0 and arr[min_q[-1]] >= arr[i]):
             min_q.pop()
 
-        print('j',j)
-        print('max_q',max_q[0])
-        if (len(max_q) > 0 and j - max_q[0] == k):
-            print("entering max double")
+        while (len(max_q) > 0 and arr[max_q[-1]] <= arr[i]):
             max_q.pop()
 
-        print(max_q)
-        # print('max',arr[max_q[0]])
+        min_q.append(i)
+        max_q.append(i)
 
-
-        if len(min_q) == 0:
-            print("entering min")
-            min_q.append(j)
-
-        if len(max_q) == 0:
-            print("entering max")
-            max_q.append(j)
-
-
-        if arr[min_q[0]] > arr[j]:
-            min_q.appendleft(j)
-
-        if arr[max_q[0]] < arr[j]:
-            max_q.appendleft(j)
-
-
-        sum += arr[min_q[0]] + arr[max_q[0]]
-        print('min',arr[min_q[0]],' max',arr[max_q[0]])
-        print('sum',sum)
-
-    return sum
+    print(arr[min_q[0]])
+    print(arr[max_q[0]])
+    print(min_q)
+    print(max_q)
 
 
 arr=[2, 5, -1, 7, -3, -1, -2]
