@@ -88,4 +88,4 @@ print(root.PostOrderTraversal(root)) # LRN(Left-Right-Node)
 
 
 
-# print(InOrder(root)) # Outside class
+print(InOrder(root)) # Outside class
