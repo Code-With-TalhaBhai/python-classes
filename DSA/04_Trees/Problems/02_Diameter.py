@@ -1,6 +1,11 @@
 from binarytree import root
 
 
+# 1. diameter using nodes
+# 2. diameter using edges
+
+
+
 def height(root):
     if root == None:
         return 0
