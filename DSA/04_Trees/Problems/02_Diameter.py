@@ -32,18 +32,18 @@ def diameter1(root):
 
 # Time Complexity(O(n)) -> using edges
 def diameter2(root): 
+    final = [0]
     def diameter(root):
         if root is None:
-            return (-1,-1) # tuple
+            return -1
         
         left = diameter(root.left)
         right = diameter(root.right)
 
-        # hei = max(left[0],right[0]) + 1
-        # dia = left[0]+right[0] + 2
-        # return (hei,dia)
-        return (max(left[0],right[0])+1,left[0]+right[0]+2)
-    return diameter(root)[1]
+        final[0] = max(final[0],left+right+2)
+        return max(left,right)+1
+    diameter(root)
+    return final[0]
 
 
 print(diameter1(root))
