@@ -64,3 +64,19 @@ root.insert(40)
 # print(Level_Order_Traversal(root))
 
 
+
+def buildTree(preOrder,inOrder):
+    if not preOrder or not inOrder:
+        return None
+    
+    root = Node(preOrder[0])
+    root_index = inOrder.index(root.data)
+    # root_index = inOrder.index(root)
+
+    root.left = buildTree(preOrder[1:root_index+1],inOrder[:root_index])
+    root.right = buildTree(preOrder[root_index+1:],inOrder[root_index+1:])
+    return root
+
+
+
+
