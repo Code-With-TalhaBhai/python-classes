@@ -8,43 +8,34 @@ inorder = [8,4,2,10,5,1,3,7]
 root = buildTree(preorder,inorder)
 
 neighbour_dict = defaultdict(list)
-dq = deque()
-dq.append(root)
-
-while dq:
-    node = dq.popleft()
 
 
-    left = node.left
-    right = node.right
 
-    if left:
-        neighbour_dict[node.data].append(left.data)
-        neighbour_dict[left.data].append(node.data)
-        dq.append(left)
-    if right:
-        neighbour_dict[node.data].append(right.data)
-        neighbour_dict[right.data].append(node.data)
-        dq.append(right)
+def find_neighbour(root):
+    if not root:
+        return
+    
+    if root.left:
+        neighbour_dict[root.data].append(root.left.data)
+        neighbour_dict[root.left.data].append(root.data)
+    if root.right:
+        neighbour_dict[root.data].append(root.right.data)
+        neighbour_dict[root.right.data].append(root.data)
 
+    find_neighbour(root.left)
+    find_neighbour(root.right)
+
+
+find_neighbour(root)
 # print(neighbour_dict)
+
 target = 10
-nq = deque()
-nq.append((target,0))
 visited = set()
 visited.add(target)
 
-while nq:
-    node,time = nq.popleft()
-    for neighbour in neighbour_dict[node]:
-        if neighbour not in visited:
-            visited.add(neighbour)
-            nq.append((neighbour,time+1))
-
-print(time)
 
 
 
 
 
-    
+# print(time_to_burn())

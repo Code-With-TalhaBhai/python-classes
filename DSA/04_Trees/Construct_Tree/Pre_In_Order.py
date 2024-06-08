@@ -14,7 +14,6 @@ def buildTree(preOrder,inOrder):
     
     root = Tree(preOrder[0])
     root_index = inOrder.index(root.data)
-    # root_index = inOrder.index(root)
 
     root.left = buildTree(preOrder[1:root_index+1],inOrder[:root_index])
     root.right = buildTree(preOrder[root_index+1:],inOrder[root_index+1:])

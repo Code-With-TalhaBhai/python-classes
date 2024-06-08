@@ -87,5 +87,5 @@ print(root.PreOrderTraversal(root)) # NLR(Node-Left-Right)
 print(root.PostOrderTraversal(root)) # LRN(Left-Right-Node)
 
 
-
+print("inorder outside class")
 print(InOrder(root)) # Outside class
