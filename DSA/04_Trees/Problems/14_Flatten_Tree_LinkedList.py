@@ -1,4 +1,4 @@
-from binarytree import root
+from binarytree import root,Node
 
 class linkedList():
     def __init__(self):
@@ -23,19 +23,25 @@ root_linkedlist = linkedList()
 
 def traverse_linkedlist(head):
     if not head:
+        print()
         return
     
-    print(head.data,end=" ")
-    traverse_linkedlist(head.right)
+    while head:
+        print(head.data,end=" ")
+        head = head.right
+
+    # through recurrsion
+    # traverse_linkedlist(head.right)
 
 
 
 
-# Through Recurrsion(Time-Complexity(O->N),Space-Complexity(O->N))
+# Through Recurrsion(Time-Complexity(O->N),Space-Complexity(O->N)) and requies its own custom-tree
 def flatten_tree_into_linkedlist1(root):
     if not root:
         return
 
+    # using root_linkedlist its own tree, not recommended way
     root_linkedlist.insert(root.data)
     flatten_tree_into_linkedlist1(root.left)
     flatten_tree_into_linkedlist1(root.right)
@@ -48,30 +54,45 @@ def flatten_tree_into_linkedlist2(root):
         return
     
     curr = root
-    while curr is not None:
-        if curr.left is None:
-            print(curr.data,end=" ")
+
+    while curr:
+        if not curr.left:
             curr = curr.right
         else:
-            print(curr.data,end=" ")
-            temp = curr.left
-            while temp.right is not None:
-                temp = temp.right
-            temp.right = curr.right
-            temp1 = curr
-            curr =  curr.left
-            temp1.right = curr   
+            predecessor = curr.left
+            while predecessor.right is not None:
+                predecessor = predecessor.right
+            predecessor.right = curr.right
+
+            # 1st
+            # temp = curr
+            # curr = curr.left
+            # temp.right = curr
+            # temp.left = None
+            
+            #2nd
+            curr.right = curr.left
+            curr.left = None
+            curr = curr.right
+
+
+    
 
 
 
 
-print("Flatten binary tree through recurrsion with extra tree(space-complexity (O^n)) and time-complexity of (O^n)")
-flatten_tree_into_linkedlist1(root)
-traverse_linkedlist(root_linkedlist)# just for check
+# Through recurrsion with extra tree(space-complexity (O^n)) and time-complexity of (O^n)
+# flatten_tree_into_linkedlist1(root)
+# traverse_linkedlist(root_linkedlist)# just for check
 
-print()
-print("Flatten binary tree through morris-traversal with (space-complexity (O^1)) and time-complexity of (O^n)")
-flatten_tree_into_linkedlist2(root)
-print()
-traverse_linkedlist(root)# just for check
+# Through morris-traversal with (space-complexity (O^1)) and time-complexity of (O^n)
+myroot = Node(50)
+myroot.insert(40)
+myroot.insert(30)
+myroot.insert(45)
+myroot.insert(60)
+myroot.insert(55)
+myroot.insert(70)
+flatten_tree_into_linkedlist2(myroot)
+traverse_linkedlist(myroot)# just for check
 

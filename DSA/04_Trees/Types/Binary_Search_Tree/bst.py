@@ -1,6 +1,4 @@
 import collections
-from mailcap import findmatch
-
 
 class BST:
     def __init__(self):
@@ -96,16 +94,16 @@ def delete(root,val):
 
         elif root.left is not None and root.right is not None:
             # by inorder predecessor
-            # temp = findMax(root.left) 
-            # root.data = temp.data
-            # root.left = delete(root.left,temp.data)
-            # return root
+            temp = findMax(root.left) 
+            root.data = temp.data
+            root.left = delete(root.left,temp.data)
+            return root
 
             # By InOrder Successor
-            temp = findMin(root.right)
-            root.data = temp.data
-            root.right = delete(root.right,temp.data)
-            return root        
+            # temp = findMin(root.right)
+            # root.data = temp.data
+            # root.right = delete(root.right,temp.data)
+            # return root        
     else:
         if val < root.data:
             root.left = delete(root.left,val)
