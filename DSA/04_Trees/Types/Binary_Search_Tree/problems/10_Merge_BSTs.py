@@ -1,6 +1,8 @@
 import collections
 from bst import BST
 
+
+
 def level_order_traversal(root):
     if not root:
         return None
@@ -26,32 +28,41 @@ def level_order_traversal(root):
         res.append(level)
     print(res)
 
+
+
 # Two BSTs
 total_inorder = [
     [1,3,5],[2,4,6]
 ]
 
-all_inorders = []
-for inorder in total_inorder:
-    all_inorders += inorder    
-all_inorders.sort()
 
 
 
-def merge_bsts(inorder):
-    if not inorder:
-        return None
+def merge_bsts(total_inorder):
+
+    all_inorders = []
+    for inorder in total_inorder:
+        all_inorders += inorder  
+    all_inorders.sort()
+
     
-    mid = int(len(inorder)/2)
-    root = BST(inorder[mid])
+    # building tree from inorder
+    def build_bsts(inorder):
+        if not inorder:
+            return None
+        
+        mid = int(len(inorder)/2)
+        root = BST(inorder[mid])
 
-    root.left = merge_bsts(inorder[:mid])
-    root.right = merge_bsts(inorder[mid+1:])
+        root.left = build_bsts(inorder[:mid])
+        root.right = build_bsts(inorder[mid+1:])
 
-    return root
+        return root
+    
+    return build_bsts(all_inorders)
 
 
 
-merge_root = merge_bsts(all_inorders)
+merge_root = merge_bsts(total_inorder)
 level_order_traversal(merge_root)
 
