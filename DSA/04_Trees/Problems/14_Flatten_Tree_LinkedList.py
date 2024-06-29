@@ -76,7 +76,26 @@ def flatten_tree_into_linkedlist2(root):
             curr = curr.right
 
 
-    
+# Through DFS
+def flatten_tree_into_linkedlist3(root):
+
+    prev = [None]
+    def flatten_tree(root):
+        if not root:
+            return None
+
+        
+        right_subtree_root = root.right
+        if prev[0] is not None:
+            prev[0].right = root
+            prev[0].left = None
+        prev[0] = root
+
+        flatten_tree(root.left)
+        flatten_tree(right_subtree_root)
+
+    flatten_tree(root)
+
 
 
 
@@ -93,6 +112,11 @@ myroot.insert(45)
 myroot.insert(60)
 myroot.insert(55)
 myroot.insert(70)
-flatten_tree_into_linkedlist2(myroot)
-traverse_linkedlist(myroot)# just for check
+# flatten_tree_into_linkedlist2(myroot)
+# traverse_linkedlist(myroot)# just for check
+
+
+# Through dfs
+flatten_tree_into_linkedlist3(myroot)
+traverse_linkedlist(myroot)
 

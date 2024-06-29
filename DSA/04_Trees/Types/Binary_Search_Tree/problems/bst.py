@@ -24,8 +24,7 @@ def insert(root,data):
 
 
 
-root = BST()
-insert(root,50)
+root = BST(50)
 insert(root,25)
 insert(root,10)
 insert(root,70)

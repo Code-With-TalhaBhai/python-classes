@@ -63,6 +63,8 @@ def merge_bsts(total_inorder):
 
 
 
-merge_root = merge_bsts(total_inorder)
+
+
+merge_root = merge_bsts(total_inorder) #Through Lists 
 level_order_traversal(merge_root)
 

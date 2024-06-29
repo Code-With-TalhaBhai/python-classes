@@ -18,5 +18,4 @@ def morris_preorder_traversal(root):
 
 
 
-
 morris_preorder_traversal(root)
