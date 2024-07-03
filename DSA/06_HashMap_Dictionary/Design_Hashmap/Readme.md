@@ -8,9 +8,6 @@ Hashmap or HashTable are a common data-structure used to store key-value pairs f
 
 Hashing is a process of converting a key(input) into a fixed size hash-code
 Hashing(Hash-Function) depeneds upon two factors:
-
-    - Hash Code
-    - Compression Funtion
   
     1. `Hash-Code:` It is responsible to convert key into int (e.g Converting key content to its equivalent ascii codes and then add each of them)
      
@@ -18,16 +15,13 @@ Hashing(Hash-Function) depeneds upon two factors:
 
 
 ****Time-Complexity(HashMap)****
-`Insertion`: O(1)
-`Searching`: O(1)
-`Deletion`: O(1)
+    1. `Insertion`: O(1)
+    2. `Searching`: O(1)
+    3. `Deletion`: O(1)
 
 ***Collision Handling***
 
 Sometimes, it happens that two or more than two keys generates similar hash, which results in hashing-collision. There are two ways to deal with it: 
-
-    - Open Addressing
-    - Close Addressing
   
     1. Open-Addressing:
         In Open-Addressing, we store the value in same hash location, instead we assign single value,we can make linkedlist or array at that address, this leads to `Separate Chaining`, in which Time-Complexity is O(n). `n` is the lenght of linkedlist or array
@@ -39,13 +33,12 @@ Sometimes, it happens that two or more than two keys generates similar hash, whi
         2. Quadratic Probing (Sqaures the current index and then check if the space avaible for new index)
         3. Custome Probling (Your own algorithm)
    
-*****Load Factor*****
+##### Load Factor:
 Load Factor is a measure of how full the hast table is. It is defined as the ration of number of elements in the hash table to number of buckets or slots available
 
-`Load Factor` = Number of Elements / Number of Buckets
-e.g
-    - Load Factor = 50 / 100
-    - Load Factor = 0.5
+`Load Factor` = Number of Elements / Number of Buckets<br>
+e.g Load Factor = 50 / 100<br>
+    Load Factor = 0.5
   
     1. Performance:
         - A lower load factor reduces the number of collisions. Lower Load Factor means there are more slots(buckets) available. 
