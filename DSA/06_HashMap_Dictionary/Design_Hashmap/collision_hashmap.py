@@ -42,6 +42,7 @@ class HashMap():
         for idx,element in enumerate(self.arr[h]):
             if element[0] == key:
                 del self.arr[h][idx]
+                return
 
 
 my_dict = HashMap()
