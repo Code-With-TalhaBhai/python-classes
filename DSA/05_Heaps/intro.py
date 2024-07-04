@@ -33,12 +33,24 @@ class Heap():
 
     
     def deletion(self,val):
-        ...
-    
+        
+        for index,item in enumerate(self.heap_arr):
+            if val == self.heap_arr[index]:
+                break
 
-    def heapify(self,arr):
-        for item in arr:
-            self.insert(item)
+        self.heap_arr[index],self.heap_arr[self.top-1] = self.heap_arr[self.top-1],self.heap_arr[index]
+        self.heap_arr.pop(self.top-1)
+
+        left_child = 2 * index
+        right_child = (2 * index) + 1
+
+        self.top -= 1
+
+        if left_child < self.top and right_child < self.top:
+            if self.heap_arr[left_child] > self.heap_arr[right_child] and self.heap_arr[left_child] > self.heap_arr[index]: # type: ignore
+                self.heap_arr[left_child],self.heap_arr[index] = self.heap_arr[index],self.heap_arr[left_child]
+            
+        
 
     def print(self):
         for i in range(1,self.top):
@@ -50,7 +62,10 @@ class Heap():
 heap = Heap()
 # Inserting elements through arr is known as heapify
 arr = [50,55,53,52,54]
-heap.heapify(arr)
+for item in arr:
+    heap.insert(item)
+
+heap.deletion(54)
 heap.print()
 
 
