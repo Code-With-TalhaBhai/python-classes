@@ -17,7 +17,7 @@ def heapify(arr,j,n):
         heapify(arr,largest,n)
 
 
-
+# Fake Heap-sort own solution
 # def heap_sort(arr):
 #     n = len(arr)
 #     for i in range(len(arr)):
@@ -27,6 +27,7 @@ def heapify(arr,j,n):
 #         arr[0],arr[n] = arr[n],arr[0]
 
 
+# Real Heap-Sort
 def heap_sort(arr):
     n = len(arr)
     for i in range(n//2,-1,-1):

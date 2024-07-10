@@ -33,7 +33,7 @@ def kth_largest_element1(data,k):
         data[0],data[i] = data[i],data[0]
         heapify(data,0,i)
 
-    # print(data)
+    print(data)
     return data[len(data)-k]
 
 
@@ -41,22 +41,17 @@ def kth_largest_element1(data,k):
 
 
 def kth_largest_element2(data,k):
-    
-    # print(data)
-    data = [-data[i] for i in range(len(data))]
-    # data = [-item for item in data]
-
     import heapq
-    heapq.heapify(data)
 
-    # print(data)
+    data2 = data[:k]
+    heapq.heapify(data2) # Min-Heap
 
-    for i in range(k-1):
-        heapq.heappop(data)
+    for i in range(k,len(data)):
+        if data2[0] < data[i]:
+            heapq.heappop(data2)
+            heapq.heappush(data2,data[i])
 
-    # print(data)
-    return abs(heapq.heappop(data))
-
+    return data2[0]
 
 
 
@@ -67,6 +62,5 @@ print('Kth largest element is: ',kth_largest_element1(data1,k))
 
 
 # Without Sorting
-k = 3
 data2 = data.copy()
 print('Kth largest element is: ',kth_largest_element2(data2,k))

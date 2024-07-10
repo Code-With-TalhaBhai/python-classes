@@ -60,8 +60,7 @@ def isMaxHeap(root):
     if not (root.data >= root.left.data and root.data >= root.right.data):
         return False
 
-    # left = isMaxHeap(root.left,left_limit,right_limit)
-    # right = isMaxHeap(root.right,left_limit,right_limit)
+
     left = isMaxHeap(root.left)
     right = isMaxHeap(root.right)
 
