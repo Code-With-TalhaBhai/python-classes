@@ -52,6 +52,20 @@ def kth_smallest_element2(data,k):
             max_data_heap.append(data[i])
             MaxHeap(max_data_heap)
 
+    return max_data_heap[0]
+
+
+def kth_smallest_element3(data,k):
+    
+    max_data_heap = []
+    for i in range(len(data)):
+        if len(max_data_heap) < k:
+            max_data_heap.append(data[i])
+        else:
+            if max_data_heap[0] > data[i]:
+                DeleteHeap(max_data_heap)
+                max_data_heap.append(data[i])
+                MaxHeap(max_data_heap)
 
     return max_data_heap[0]
 
@@ -61,8 +75,10 @@ k = 4
 data = [46,32,34,33,43,22,50,44]
 data1 = data.copy()
 data2 = data.copy()
+data3 = data.copy()
 
 # With Sorting
 print("Kth smallest element is: ",kth_smallest_element1(data1,k))
 # Without Sorting
 print("Kth smallest element is: ",kth_smallest_element2(data2,k))
+print("Kth smallest element is: ",kth_smallest_element3(data3,k))

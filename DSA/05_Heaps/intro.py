@@ -78,18 +78,7 @@ class Heap():
                 return
 
             root_index = largest
-
-
-            
-
-
-
-        
-
-
-
-        
-        
+  
 
     def print(self):
         for i in range(1,self.top):

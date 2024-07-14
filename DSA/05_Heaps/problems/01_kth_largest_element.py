@@ -54,6 +54,21 @@ def kth_largest_element2(data,k):
     return data2[0]
 
 
+def kth_largest_element3(data,k):
+    import heapq
+
+    data3 = []
+    for i in range(len(data)):
+        if len(data3) < k:
+            heapq.heappush(data3,data[i])
+        else:
+            if data3[0] < data[i]:
+                heapq.heappop(data3)
+                heapq.heappush(data3,data[i])
+
+    return data3[0]
+
+
 
 # With Sorting
 k = 3
@@ -64,3 +79,6 @@ print('Kth largest element is: ',kth_largest_element1(data1,k))
 # Without Sorting
 data2 = data.copy()
 print('Kth largest element is: ',kth_largest_element2(data2,k))
+
+data3 = data.copy()
+print('Kth largest element is: ',kth_largest_element3(data3,k))

@@ -44,6 +44,8 @@ def inorder(root,arr):
     inorder(root.right,arr)
 
 
+
+
 def postorder_check(root,arr):
     if not root:
         return None
