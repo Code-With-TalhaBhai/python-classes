@@ -22,7 +22,7 @@ def display_prefixes(curr,prefix,all_seraches):
     for letter in curr:
         prefix[0] += letter
         display_prefixes(curr[letter],prefix,all_seraches)  
-        prefix[0] = prefix[0][:-1]
+        prefix[0] = prefix[0][:-1] # deleting element
 
 
 def displayContacts(trie_contact, s):
@@ -33,8 +33,6 @@ def displayContacts(trie_contact, s):
         trie_contact = trie_contact[letter]
 
     all_searches = []
-    # print(trie_contact)
-    # print(s)
     display_prefixes(trie_contact,[s],all_searches)
     return all_searches
 
@@ -45,12 +43,12 @@ def input_output_function(contact,s):
         trie_contact.insert(word)
     trie_contact = trie_contact.root
 
-    # prefix = ""
-    # for char in s:
-    #     prefix += char
-    #     print(displayContacts(trie_contact,prefix))
-    # print()
-    print(displayContacts(trie_contact,"g"))
+    prefix = ""
+    for char in s:
+        prefix += char
+        print(displayContacts(trie_contact,prefix))
+    print()
+    # print(displayContacts(trie_contact,"g"))
 
 contacts1 = ["geeikistest", "geeksforgeeks", "geeksfortest"]
 s1 = "geeips"
@@ -60,7 +58,7 @@ s2 = "coding"
 
 
 input_output_function(contacts1,s1)
-# input_output_function(contacts2,s2)
+input_output_function(contacts2,s2)
 
 
 
