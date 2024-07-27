@@ -21,5 +21,6 @@ def permutations(nums):
 
 
 
-nums = [1,2,3]
+# nums = [1,2,3]
+nums = ['a','b','c']
 print(permutations(nums))

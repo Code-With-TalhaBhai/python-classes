@@ -45,8 +45,8 @@ def subsets2(nums:List[int]) -> List[List[int]]:
 
 
 # nums = [0]
-nums = [1,2]
-# nums = [1,2,3]
+# nums = [1,2]
+nums = [1,2,3]
 print(subsets1(nums))
 print(subsets2(nums))
 
