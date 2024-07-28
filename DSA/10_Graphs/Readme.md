@@ -24,4 +24,5 @@ Having some weight value over the edge. If there is no weight, default weight is
 ## Representation of Graphs:
     1. Adjacency Matrix (2D Array)
     2. Ajacency List(Dictionary with arrays values)
+    3. Class with `data` attribute as value and `neighbour` attribute as list of edges
    
