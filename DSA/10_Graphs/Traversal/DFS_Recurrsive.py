@@ -11,26 +11,36 @@ for v,e in edge_list:
     # adjacency_list[e].append(v)
 
 
-# print(dict(adjacency_list)) 
+print(dict(adjacency_list)) 
 # print(adjacency_list[0])
 
 
 
 
 # DFS with Recurrsion - O(V+E) where V is the number of nodes and E is the number of edges
-def dfs_recurrsive(node):
-    print(node)
-    for neighbour in adjacency_list[node]:
-        if neighbour not in seen:
-            seen.add(neighbour)
-            # seen.append(neighbour) # with list
-            dfs_recurrsive(neighbour)
+def dfs_recurrsive(adjacency_list,node,visited=None):
+    if not visited:
+        visited = set()
+
+    if node not in visited:
+        print(node)
+        visited.add(node)
+
+        for neighbour in adjacency_list[node]:
+            if neighbour not in visited:
+                dfs_recurrsive(adjacency_list,neighbour,visited)
+
+    # print(node)
+    # for neighbour in adjacency_list[node]:
+    #     if neighbour not in visited:
+    #         visited.add(neighbour)
+    #         dfs_recurrsive(adjacency_list,neighbour,visited)
 
 
-source = 0
-seen = set()
-seen.add(source)
+# source = 0
+# seen = set()
+# seen.add(source)
 # seen = []
 # seen.append(source)
-dfs_recurrsive(source)
-print(seen)
+dfs_recurrsive(adjacency_list,0)
+# print(seen)

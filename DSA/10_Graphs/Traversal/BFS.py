@@ -11,8 +11,15 @@ for v,e in edge_list:
 
 
 
-def bfs(dq):
+def bfs(adjacency_list):
+    source = 0
+    seen = set()
+    seen.add(source)
 
+    dq = deque()
+    dq.append(source)
+
+    
     while dq:
        node = dq.popleft()
        print(node)
@@ -22,13 +29,4 @@ def bfs(dq):
                dq.append(neighbour) 
 
 
-source = 0
-seen = set()
-seen.add(source)
-
-dq = deque()
-dq.append(source)
-
-bfs(dq)
-print(seen)
-
+bfs(adjacency_list)

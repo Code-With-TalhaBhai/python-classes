@@ -18,7 +18,7 @@ adjacency_list = defaultdict(list)
 for u,v in edge_list:
     adjacency_list[u].append(v)
     adjacency_list[v].append(u) # As it is undirected graph
-# print(adjacency_list)
+print(adjacency_list)
 
 
 
@@ -27,7 +27,8 @@ def cycleUtil(node,visited,parent,adjacency_list):
     visited[node] = True
     for neighbour in adjacency_list[node]:
         if not visited[neighbour]:
-            return cycleUtil(neighbour,visited,node,adjacency_list)
+            if cycleUtil(neighbour,visited,node,adjacency_list):
+                return True
         elif neighbour != parent:
             return True
         

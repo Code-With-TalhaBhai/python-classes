@@ -1,28 +1,39 @@
 from collections import defaultdict,deque
+from operator import ne
 
+# edge_list = [[1,2],[1,3],[2,4],[3,4],[4,5],[4,6],[5,6]]
+edge_list = [[0,2],[0,3],[1,3],[1,4],[2,3]]
 
-# Using Kahn's Algorithm
-# edge_list = [[1,2],[2,3],[2,4],[3,7],[3,8],[4,5],[5,6],[6,4],[8,7]] # Cyclic
-edge_list = [[1,2],[2,3],[2,4],[3,7],[3,8],[4,5],[4,6],[5,6],[8,7]] # Acyclic
-
+# vertices
 adjacency_list = defaultdict(list)
+
 
 for u,v in edge_list:
     adjacency_list[u].append(v)
     adjacency_list[v]
-
+# print(adjacency_list)
 
 indegree = {i:0 for i in adjacency_list}
 
+# creating-indegree
 for node in adjacency_list:
     for neighbour in adjacency_list[node]:
         indegree[neighbour] += 1
 
+# print(indegree)
 
+
+# dq = deque()
+# for node in indegree:
+#     if indegree[node] == 0:
+#         dq.append(node)
+
+# Same as above, short
 dq = deque([node for node in indegree if indegree[node] == 0])
-print(dq)
+# print(dq)
 
 topological_sort = []
+
 while dq:
     element = dq.popleft()
     topological_sort.append(element)
@@ -33,14 +44,12 @@ while dq:
         if indegree[neighbour] == 0:
             dq.append(neighbour)
 
-print(adjacency_list)
+
+# additional
+# if len(topological_sort) == len(adjacency_list):
+#     print(topological_sort)
+# else:
+#     print("graph has cycle")
+
 print(topological_sort)
-if len(topological_sort) == len(adjacency_list):
-    print("False")
-else:
-    print("True")
-
-
-
-
 
