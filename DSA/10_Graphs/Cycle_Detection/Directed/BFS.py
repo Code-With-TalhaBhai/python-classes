@@ -2,8 +2,8 @@ from collections import defaultdict,deque
 
 
 # Using Kahn's Algorithm
-# edge_list = [[1,2],[2,3],[2,4],[3,7],[3,8],[4,5],[5,6],[6,4],[8,7]] # Cyclic
-edge_list = [[1,2],[2,3],[2,4],[3,7],[3,8],[4,5],[4,6],[5,6],[8,7]] # Acyclic
+edge_list = [[1,2],[2,3],[2,4],[3,7],[3,8],[4,5],[5,6],[6,4],[8,7]] # Cyclic
+# edge_list = [[1,2],[2,3],[2,4],[3,7],[3,8],[4,5],[4,6],[5,6],[8,7]] # Acyclic
 
 adjacency_list = defaultdict(list)
 

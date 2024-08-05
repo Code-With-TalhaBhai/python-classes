@@ -11,7 +11,7 @@ adjacency_list = defaultdict(list)
 for u,v in edge_list:
     adjacency_list[u].append(v)
     adjacency_list[v]
-# print(adjacency_list)
+print(adjacency_list)
 
 indegree = {i:0 for i in adjacency_list}
 
