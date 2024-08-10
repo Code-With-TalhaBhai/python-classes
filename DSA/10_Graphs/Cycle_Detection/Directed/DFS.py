@@ -18,17 +18,28 @@ def dfs_cycle(adjacency_list,node,visited=None,DFS_visited=None):
     if not DFS_visited:
         DFS_visited = defaultdict(bool)
 
-    if DFS_visited[node] == True:
-        return True
+    # if DFS_visited[node] == True:
+    #     return True
     
-    if node in visited:
-        return False
+    # if node in visited:
+    #     return False
+
+    # visited.add(node)
+    # DFS_visited[node] = True
+    
+    # for neighbour in adjacency_list[node]:
+    #     if dfs_cycle(adjacency_list,neighbour,visited,DFS_visited):
+    #         return True
+
 
     visited.add(node)
     DFS_visited[node] = True
-    
+
     for neighbour in adjacency_list[node]:
-        if dfs_cycle(adjacency_list,neighbour,visited,DFS_visited):
+        if neighbour not in visited:
+            if dfs_cycle(adjacency_list,neighbour,visited,DFS_visited):
+                return True
+        elif DFS_visited[node] == True:
             return True
 
     DFS_visited[node] = False

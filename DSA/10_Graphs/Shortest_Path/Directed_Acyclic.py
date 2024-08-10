@@ -37,7 +37,7 @@ topological_sort = tp_sort(adjacency_list)
 # print(topological_sort)
 
 
-def shortestPath(src,toplogical_sort):
+def shortestPath(src,topological_sort):
     shortest_paths = {i:float("inf") for i in topological_sort}
     shortest_paths[src] = 0
 
@@ -47,9 +47,9 @@ def shortestPath(src,toplogical_sort):
             # for neighbour in adjacency_list[node]:
             #     if shortest_paths[node] + neighbour[1] < shortest_paths[neighbour[0]]:
             #         shortest_paths[neighbour[0]] = shortest_paths[node] + neighbour[1]
-            for v,weight in adjacency_list[node]:
-                if shortest_paths[node] + weight < shortest_paths[v]:
-                    shortest_paths[v] = shortest_paths[node] + weight
+            for neighbour,weight in adjacency_list[node]:
+                if shortest_paths[node] + weight < shortest_paths[neighbour]:
+                    shortest_paths[neighbour] = shortest_paths[node] + weight
 
 
     return shortest_paths
