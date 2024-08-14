@@ -11,31 +11,49 @@ for u,v,w in edge_list:
 # print(adjacency_list)
 
 
-def prims_algo(adjacency_list,src):
-    # print(len(adjacency_list))
+def prims_algo1(adjacency_list,src):
     mst = set()
-    parents = []
-    weight_track = {i:float("inf") for i in adjacency_list}
+    parents = {}
     min_heap = []
-    heapq.heappush(min_heap,(src,0))
-    mst.add(src)
+    heapq.heappush(min_heap,(0,src,-1))
+    total_weight = 0
+
+
+    while min_heap:
+        weight,node,parent = heapq.heappop(min_heap)
+
+        mst.add(node)
+        parents[node] = parent
+        total_weight += weight
+
+
+
+    return {'mst':parents,'weight':total_weight}
+
+
+
+
+
+def prims_algo2(adjacency_list,src):
+    mst = set()
+    parents = {}
+    min_heap = []
+    heapq.heappush(min_heap,(0,src,-1))
+    total_weight = 0
+
 
     while len(mst) < len(adjacency_list):
-        node,weight = heapq.heappop(min_heap)
+        weight,node,parent = heapq.heappop(min_heap)
+        parents[node] = parent
+        mst.add(node)
+        wei += weight
 
         for neighbour,child_weight in adjacency_list[node]:
-            total_weight = weight + child_weight
-            if total_weight < weight_track[neighbour]:
-                parents.append(neighbour)
-                weight_track[neighbour] = total_weight
-            heapq.heappush(min_heap,(total_weight,neighbour))
-            mst.add(neighbour)
+            if neighbour not in mst:
+                heapq.heappush(min_heap,(child_weight,neighbour,node))
 
-    return parents
+    return {'mst':parents,'weight':total_weight}
 
 
-
-
-
-
-print(prims_algo(adjacency_list,0))
+print(prims_algo1(adjacency_list,0))
+print(prims_algo2(adjacency_list,0)) # More efficient
