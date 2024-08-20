@@ -12,44 +12,45 @@ for u,v,w in edge_list:
 
 
 def prims_algo1(adjacency_list,src):
-    mst = set()
-    parents = {}
+    visited = set()
     min_heap = []
-    heapq.heappush(min_heap,(0,src,-1))
+    heapq.heappush(min_heap,(0,src,-1)) # (weight,node,parent)
     total_weight = 0
-
+    parents = {}
 
     while min_heap:
+        # print(min_heap)
         weight,node,parent = heapq.heappop(min_heap)
+        
+        if node not in visited:
+            total_weight += weight
+            visited.add(node)
+            for neighbour,child_weight in adjacency_list[node]:
+                parents[node] = parent
+                heapq.heappush(min_heap,(child_weight,neighbour,node))
 
-        mst.add(node)
-        parents[node] = parent
-        total_weight += weight
-
-
-
-    return {'mst':parents,'weight':total_weight}
+    return {'mst':parents,'total_weight':total_weight} 
 
 
 
 
 
 def prims_algo2(adjacency_list,src):
-    mst = set()
+    visited = set()
     parents = {}
     min_heap = []
     heapq.heappush(min_heap,(0,src,-1))
     total_weight = 0
 
 
-    while len(mst) < len(adjacency_list):
+    while len(visited) < len(adjacency_list):
         weight,node,parent = heapq.heappop(min_heap)
         parents[node] = parent
-        mst.add(node)
-        wei += weight
+        visited.add(node)
+        total_weight += weight
 
         for neighbour,child_weight in adjacency_list[node]:
-            if neighbour not in mst:
+            if neighbour not in visited:
                 heapq.heappush(min_heap,(child_weight,neighbour,node))
 
     return {'mst':parents,'weight':total_weight}

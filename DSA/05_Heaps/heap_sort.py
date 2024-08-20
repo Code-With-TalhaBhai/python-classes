@@ -30,14 +30,19 @@ def heapify(arr,j,n):
 # Real Heap-Sort
 def heap_sort1(arr):
     n = len(arr)
+
+    # 1st way
     for i in range(n//2,-1,-1):
         heapify(arr,i,n) # Build Heap
-
-
     for i in range(n-1,0,-1):
         arr[0],arr[i] = arr[i],arr[0]
         heapify(arr,0,i) # min to max
-        # heapify(arr,0,n) # max to min
+        # heapify(arr,0,n) # max to min -> not true working on
+
+
+    # we cannot do as it is a complete binary tree and we can only extract `min max from root`
+    # for i in range(0,n):
+        # heapify(arr,i,n)
 
 
 def heap_sort2(arr):
@@ -52,9 +57,10 @@ def heap_sort2(arr):
     
 
 
-arr : list[int] = [50,55,53,52,54]
+# arr : list[int] = [55,58,53,52,54]
 # arr : list[int] = [5,1,1,2,0,0]
-arr1 = arr.copy() # through self-made heapify
+arr = [5,2,3,1]
+arr1 = arr.copy() # Through self-made heapify less time-complexity uses bottom-up approach
 heap_sort1(arr1)
 for items in arr1:
     print(items,end=" ")
@@ -62,7 +68,7 @@ print()
 
 
 arr2 = arr.copy()
-arr2 = heap_sort2(arr2) # Extra space
+arr2 = heap_sort2(arr2) # Extra space and extra-time complexity uses top-down approach
 
 for items in arr2:
     print(items,end=" ")

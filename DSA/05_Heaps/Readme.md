@@ -26,3 +26,14 @@ Heap is a complete binary tree which start filling from left towards right, in w
 
 
 
+
+## Time-Complexity
+The worst-case time complexity of heapify depends on the algorithm used. The worst-case time complexity of bottom-up heapify is O(n), where n is the size of the heap. The worst-case time complexity of top-down heapify is O(n log n), where n is the size of the heap.
+
+
+
+## Bottom-up VS Top-down HEAPIFY:
+Bottom-up heapify starts at the lowest level of the heap and works its way up to the root, while top-down heapify starts at the root and works its way down to the lowest level of the heap. Bottom-up heapify has a time complexity of O(n), while top-down heapify has a time complexity of O(log n). Bottom-up heapify is typically faster for large heaps, while top-down heapify is faster for small heaps.
+
+
+

@@ -1,52 +1,46 @@
-import heapq
+from collections import defaultdict
 
-def dijkstra(graph, start):
-    # Create a priority queue to store (distance, node) tuples
-    priority_queue = [(0, start)]
-    # Initialize distances dictionary with infinity for all nodes
-    distances = {node: float('inf') for node in graph}
-    # Distance to the start node is 0
-    distances[start] = 0
-    # Dictionary to track the shortest path
-    shortest_path = {}
-    
-    while priority_queue:
-        # Get the node with the smallest distance
-        current_distance, current_node = heapq.heappop(priority_queue)
-        
-        # If this distance is already greater than the recorded distance, skip
-        if current_distance > distances[current_node]:
-            continue
-        
-        # Explore neighbors
-        for neighbor, weight in graph[current_node].items():
-            distance = current_distance + weight
-            
-            # Only consider this path if it's shorter
-            if distance < distances[neighbor]:
-                distances[neighbor] = distance
-                heapq.heappush(priority_queue, (distance, neighbor))
-                shortest_path[neighbor] = current_node
-    
-    return distances, shortest_path
+def tarjan(graph):
+    index = 0
+    stack = []
+    indices = {}
+    lowlink = {}
+    sccs = []
 
-# Example usage
-graph = {
-    'A': {'B': 1, 'C': 4},
-    'B': {'A': 1, 'C': 2, 'D': 5},
-    'C': {'A': 4, 'B': 2, 'D': 1},
-    'D': {'B': 5, 'C': 1}
-}
+    def strongconnect(v):
+        nonlocal index
+        indices[v] = index
+        lowlink[v] = index
+        index += 1
+        stack.append(v)
 
-start_node = 'A'
-distances, shortest_path = dijkstra(graph, start_node)
+        for w in graph[v]:
+            if w not in indices:
+                strongconnect(w)
+                lowlink[v] = min(lowlink[v], lowlink[w])
+            elif w in stack:
+                lowlink[v] = min(lowlink[v], indices[w])
 
-print("Shortest distances from node", start_node)
-for node, distance in distances.items():
-    print(f"Distance to {node}: {distance}")
+        if lowlink[v] == indices[v]:
+            scc = []
+            while True:
+                w = stack.pop()
+                scc.append(w)
+                if w == v:
+                    break
+            sccs.append(scc)
 
-# print(shortest_path)
+    for v in dict(graph):
+        if v not in indices:
+            strongconnect(v)
 
-# print("\nShortest Path Tree:")
-# for node, previous in shortest_path.items():
-    # print(f"Node {node} is reached from node {previous}")
+    return sccs
+
+
+
+edge_list = [(0,1),(1,2),(2,0),(2,3),(3,4),(4,5),(4,7),(5,6),(6,4),(6,7)]
+adjacency_list = defaultdict(list)
+for u,v in edge_list:
+    adjacency_list[u].append(v)
+
+print(tarjan(adjacency_list))

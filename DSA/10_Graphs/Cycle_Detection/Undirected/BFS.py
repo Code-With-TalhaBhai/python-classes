@@ -1,6 +1,6 @@
 from collections import defaultdict,deque
 
-edge_list = [1,2],[2,3],[4,5],[5,6],[5,7],[6,8],[7,8],[8,9]
+edge_list = [[1,2],[2,3],[4,5],[5,6],[5,7],[6,8],[7,8],[8,9]]
 
 adjacency_list = defaultdict(list)
 for u,v in edge_list:

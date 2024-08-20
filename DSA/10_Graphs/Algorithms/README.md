@@ -4,10 +4,15 @@ Greedy algorithms are a type of algorithmic approach used in problem-solving whe
 However, greedy algorithms do not always guarantee the best overall solution for every problem. They work well for specific types of problems where a globally optimal solution can be reached by following a series of locally optimal steps. Some classic examples where greedy algorithms are effective include:
 
 
-**Digkstra's Algorithm:** For finding shortest path in a graph with non-negative edge weights
+**Digkstra's Algorithm:** For finding `Shortest Path` in a graph with non-negative edge weights
 
-**Prim's Algorithm:** For finding minimum of spanning tree
+**Prim's Algorithm:** For finding `Minimum Spanning Tree`
 
+**Kruskals Algorithm:** For finding `Minimum Spanning Tree`
+
+**Kosarajus Algorithm:** For finding `Strongly Connected Component`
+
+**Tarajan's Algorithm:** For finding `Strongly Connected Component`
 
 
 
