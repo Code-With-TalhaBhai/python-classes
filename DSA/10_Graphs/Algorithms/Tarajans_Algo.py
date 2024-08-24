@@ -15,13 +15,14 @@ for u,v in edge_list:
 
 def dfs(node,adjacency_list,time,visited,disc,low,count,stack,sccs):
     visited.add(node)
-    disc[node] = time
-    low[node] = time
+    disc[node] = time[0]
+    low[node] = time[0]
     stack.append(node)
-    time += 1
+    # time += 1
 
     for neighbour in adjacency_list[node]:
         if neighbour not in visited:
+            time[0] += 1
             dfs(neighbour,adjacency_list,time,visited,disc,low,count,stack,sccs)
         low[node] = min(low[node],low[neighbour])
 
@@ -39,18 +40,18 @@ def dfs(node,adjacency_list,time,visited,disc,low,count,stack,sccs):
 
 def tarjans_algo(adjacency_list):
     visited = set()
-    n = len(adjacency_list)
-    disc =  [0]*n  #discovery time of node
-    low = [0]*n #lower(minimum) discovery time that can be reached by current node
+    # n = len(adjacency_list)
+    disc =  {}  #discovery time of node
+    low = {} #lower(minimum) discovery time that can be reached by current node
     count = [0]
     stack = []
     sccs = []
+    time = [0]
 
     # print(adjacency_list)
     for node in adjacency_list:
         if node not in visited:
-            print('working',node)
-            dfs(node,adjacency_list,0,visited,disc,low,count,stack,sccs)
+            dfs(node,adjacency_list,time,visited,disc,low,count,stack,sccs)
 
     
     return sccs

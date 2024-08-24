@@ -56,5 +56,5 @@ def prims_algo2(adjacency_list,src):
     return {'mst':parents,'weight':total_weight}
 
 
-print(prims_algo1(adjacency_list,0))
+print(prims_algo1(adjacency_list,0)) # original 
 print(prims_algo2(adjacency_list,0)) # More efficient
