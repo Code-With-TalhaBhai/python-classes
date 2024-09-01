@@ -1,0 +1,1 @@
+A bipartite graph is a type of graph in mathematics where the set of vertices can be divided into two disjoint sets such that no two vertices within the same set are adjacent.
