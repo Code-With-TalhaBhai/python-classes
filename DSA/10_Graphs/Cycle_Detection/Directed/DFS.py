@@ -39,7 +39,7 @@ def dfs_cycle(adjacency_list,node,visited=None,DFS_visited=None):
         if neighbour not in visited:
             if dfs_cycle(adjacency_list,neighbour,visited,DFS_visited):
                 return True
-        elif DFS_visited[node] == True:
+        elif DFS_visited[neighbour] == True:
             return True
 
     DFS_visited[node] = False

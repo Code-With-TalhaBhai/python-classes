@@ -24,7 +24,7 @@ def bellmanFord(edge_list):
 
 
     # relaxing edges n-1 times
-    for i in range(len(weights)-1):
+    for i in range(len(weights)-1):    
         for u,v,w in edge_list:
             if weights[u] + w < weights[v]:
                 weights[v] = weights[u] + w 

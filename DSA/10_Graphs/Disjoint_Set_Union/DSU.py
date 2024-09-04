@@ -12,7 +12,7 @@ class DisjointSetUnion:
         #     return self.find(self.parent[x])
         # return x
     
-        # With path-compression - Time-Complexity[O(1)] -> first-time Time-Complexity[O(n)]
+        # With path-compression - Time-Complexity[O(1)]  (first-time->Time-Complexity[O(n)])
         if self.parent[x] != x:
             self.parent[x] = self.find(self.parent[x]) # path-compression
         return self.parent[x]
@@ -21,7 +21,7 @@ class DisjointSetUnion:
         rootX = self.find(x)
         rootY = self.find(y)
 
-        # Without union-rank -> High Time-complexity
+        # Without union-rank -> High Time-complexity when Find()
         # if rootX != rootY:
         #     self.parent[rootY] = rootX
 

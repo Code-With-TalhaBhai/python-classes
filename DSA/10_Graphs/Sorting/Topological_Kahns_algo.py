@@ -36,7 +36,7 @@ topological_sort = []
 
 while dq:
     element = dq.popleft()
-    topological_sort.append(element)
+    topological_sort.append(element) 
 
     for neighbour in adjacency_list[element]:
         indegree[neighbour] -= 1

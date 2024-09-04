@@ -1,6 +1,6 @@
 from collections import defaultdict
 
-# A bridge is such edge which removal increase the number of components
+# A bridge is such `edge` which removal increase the number of components
 # A single wire failure which disconnects the graph
 
 # edge_list = [[0,1],[1,2],[2,3],[3,4],[4,5],[5,2]]
