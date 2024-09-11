@@ -61,7 +61,7 @@ class DSU:
 
 def kruskal_algo(edge_list):
     n = len(edge_list)
-    heap_sort = heap_sorted(edge_list,n)
+    heap_sort = heap_sorted(edge_list,n) #min-heap
     # to find number of edges
     nodes = set()
     for item in edge_list:

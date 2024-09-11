@@ -1,6 +1,6 @@
 from collections import defaultdict
 
-# Node whose removal increases the number of components
+# `Node` whose removal increases the number of components
 # Single point(node) of failure which breaks the network
 
 # edge_list = [[0,1],[1,2],[2,3],[3,4],[4,5],[5,2]]

@@ -6,7 +6,7 @@ def canFinish(prerequisites):
     for u,v in prerequisites:
         adjacency_list[u].append(v)
         adjacency_list[v]
-
+    print(adjacency_list)
 
     # visited = set()
     # dfs_visited = set()

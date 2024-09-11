@@ -1,3 +1,7 @@
+# 1. Make min_heap and add all elements(neighbour) of the node
+# 2. Pop out all the elements one-by-one
+# 3. Add their neighbours to the min_heap expcept those which are already visited
+
 from collections import defaultdict
 import heapq
 
