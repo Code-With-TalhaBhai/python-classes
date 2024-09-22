@@ -85,7 +85,7 @@ def digkstras_algo2(adjacency_list,src):
 
     while min_heap:
         weight,node = heapq.heappop(min_heap)
-        # print(weight,node)
+        # network_delaynetwork_delayprint(weight,node)
 
         # To save additional iterations as it were added in heap before when it was shortest path
         if weight > shortest_paths[node]:
