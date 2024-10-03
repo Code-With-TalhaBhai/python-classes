@@ -1,5 +1,5 @@
 
-nums = [5,2,3,1,4,54,5474,4]
+nums = [5,2,3,1,4,54,5474,4,98]
 
 
 
@@ -75,8 +75,8 @@ def merge_sort2(array):
 
 def merge3(arr,left,mid,right):
     
-    arr1 = arr[left:mid]
-    arr2 = arr[mid:right]
+    arr1 = arr[left:mid+1]
+    arr2 = arr[mid+1:right+1]
 
     l = m = 0
     k = left
@@ -111,12 +111,13 @@ def merge_sort3(array,i,j):
 
         merge3(array,i,mid,j)
 
+        
+
 
 
 # merge_sort1(nums)
 # print(nums)
 # merge_sort2(nums)
 # print(nums)
-
 merge_sort3(nums,0,len(nums)-1)
 print(nums)

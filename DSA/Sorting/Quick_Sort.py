@@ -1,40 +1,57 @@
-# Quick sort in Python
 
-# function to find the partition position
-def partition(array, low, high):
+nums = [5,2,3,1,4,54,5474,4,98]
 
-  pivot = array[high]
+def partition(arr,start,end):
+  pivot = end
+  for i in range(start,end):
+    if arr[i] >= arr[end]:
+      pivot -= 1
 
-  i = low - 1
+  if end != pivot:
+    arr[end],arr[pivot] = arr[pivot],arr[end]
+    i = start
+    j = end
 
-  for j in range(low, high):
-    if array[j] <= pivot:
-      i = i + 1
+    while i < pivot and j > pivot:
+      if arr[i] > arr[pivot] and arr[j] < arr[pivot]:
+        arr[i],arr[j] = arr[j],arr[i]
 
-      (array[i], array[j]) = (array[j], array[i])
+      if arr[i] <= arr[pivot]:
+        i += 1
 
-  (array[i + 1], array[high]) = (array[high], array[i + 1])
+      if arr[j] > arr[pivot]:
+        j -= 1
 
-  return i + 1
+  else:
+    return pivot - 1
 
-
-# function to perform quicksort
-def quickSort(array, low, high):
-  if low < high:
-    pi = partition(array, low, high)
-
-    quickSort(array, low, pi - 1)
-
-    quickSort(array, pi + 1, high)
+  return pivot
 
 
-data = [8, 7, 2, 1, 0, 9, 6]
-print("Unsorted Array")
-print(data)
 
-size = len(data)
+def quick_sort1(arr,start,end):
+  if start >= end:
+    return
 
-quickSort(data, 0, size - 1)
+  pivot = partition(arr,start,end)
+  quick_sort1(arr,start,pivot)
+  quick_sort1(arr,pivot+1,end)
 
-print('Sorted Array in Ascending Order:')
-print(data)
+
+def quick_sort2(arr):
+  if len(arr) <= 1:
+      return arr
+  else:
+      pivot = arr[len(arr) // 2]  # Choosing the middle element as pivot
+      left = [x for x in arr if x < pivot]  # Elements less than pivot
+      middle = [x for x in arr if x == pivot]  # Elements equal to pivot
+      right = [x for x in arr if x > pivot]  # Elements greater than pivot
+      return quick_sort2(left) + middle + quick_sort2(right)  # Recursively sort
+
+
+# quick_sort1(nums,0,len(nums)-1)
+# print(nums)
+
+
+sorted_arr = quick_sort2(nums)
+print(sorted_arr)

@@ -1,55 +1,40 @@
-# Online Python compiler (interpreter) to run Python online.
-# Write Python 3 code in this online editor and run it.
-print("Try programiz.pro")
+# Quick sort in Python
 
-# arr = [38,27,43,3,9,82,10]
-arr = [5,2,3,1,4,54,5474,4]
+# function to find the partition position
+def partition(array, low, high):
 
-# MergeSort in Python
+  pivot = array[high]
+
+  i = low - 1
+
+  for j in range(low, high):
+    if array[j] <= pivot:
+      i = i + 1
+
+      (array[i], array[j]) = (array[j], array[i])
+
+  (array[i + 1], array[high]) = (array[high], array[i + 1])
+
+  return i + 1
 
 
-def mergeSort(array):
-    if len(array) > 1:
+# function to perform quicksort
+def quickSort(array, low, high):
+  if low < high:
+    pi = partition(array, low, high)
 
-        #  r is the point where the array is divided into two subarrays
-        r = len(array)//2
-        L = array[:r]
-        M = array[r:]
+    quickSort(array, low, pi - 1)
 
-        # Sort the two halves
-        mergeSort(L)
-        mergeSort(M)
-        
-        print('L',L)
-        print('R',M)
+    quickSort(array, pi + 1, high)
 
-        i = j = k = 0
-        print('upper',array)
-        # Until we reach either end of either L or M, pick larger among
-        # elements L and M and place them in the correct position at A[p..r]
-        while i < len(L) and j < len(M):
-            if L[i] < M[j]:
-                array[k] = L[i]
-                i += 1
-            else:
-                array[k] = M[j]
-                j += 1
-            k += 1
 
-        # When we run out of elements in either L or M,
-        # pick up the remaining elements and put in A[p..r]
-        while i < len(L):
-            array[k] = L[i]
-            i += 1
-            k += 1
+data = [8, 7, 2, 1, 0, 9, 6]
+print("Unsorted Array")
+print(data)
 
-        while j < len(M):
-            array[k] = M[j]
-            j += 1
-            k += 1
-            
-        print(array)
-            
+size = len(data)
 
-mergeSort(arr)
-print(arr)
+quickSort(data, 0, size - 1)
+
+print('Sorted Array in Ascending Order:')
+print(data)
