@@ -12,6 +12,8 @@ def partition(arr,start,end):
     i = start
     j = end
 
+
+    # while i < j:
     while i < pivot and j > pivot:
       if arr[i] > arr[pivot] and arr[j] < arr[pivot]:
         arr[i],arr[j] = arr[j],arr[i]
