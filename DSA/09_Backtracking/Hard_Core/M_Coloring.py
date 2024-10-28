@@ -1,6 +1,7 @@
 from collections import defaultdict
 
 # assign the color to the next node not same
+# working
 
 edge_list1 = [(0,1),(0,2),(0,3),(1,2),(2,3)]
 edge_list2 = [(0,1),(0,4),(0,5),(0,10),(1,2),(1,3),(1,4),(2,3),(3,4),(3,5),(3,8),(3,9),(5,6),(5,7),(6,7),(8,9),(10,11),(10,12),(11,12)]

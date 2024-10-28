@@ -20,5 +20,5 @@ def combinations(n,k):
 
 
 n = 5
-k = 3
+k = 2
 print(combinations(n,k))
