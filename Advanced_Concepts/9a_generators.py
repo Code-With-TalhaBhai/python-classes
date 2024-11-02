@@ -29,5 +29,18 @@ def lion(n):
 main()
 
 
+
+def my_generator():
+    print('start')
+    for i in range(5):
+        yield i
+    print('end')
+
+
+for generator in my_generator():
+    print(generator)
+
+
+
 # str = "I am"*3
 # print(str)
