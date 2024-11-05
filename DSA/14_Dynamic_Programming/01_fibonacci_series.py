@@ -1,9 +1,16 @@
 
+# 1. Without DP -> Recurrsive Backtracking
+def fibonacci_series1(n):
+    if n == 0 or n == 1:
+        return n
 
-# Top-Down Approach(memoization)
+    return fibonacci_series1(n-1) + fibonacci_series1(n-2)
+
+
+# 2. Top-Down Approach(memoization)
 # Time-Complexity(O(n))
 # Space-Complexity(O(2*n))->1n for recurrsive calls + 1n for extra-memory(dictionary)
-def fibonacci_series1(n):
+def fibonacci_series2(n):
     memoize_dict = {}
 
     def fibonacci(n):
@@ -21,10 +28,10 @@ def fibonacci_series1(n):
 
 
 
-# Bottom-up Approach(Tabulation)
+# 3. Bottom-up Approach(Tabulation)
 # Time-Complexity(O(n))
 # Space-Complexity(O(n))->for dp->array
-def fibonacci_series2(n):
+def fibonacci_series3(n):
     dp = [0,1]
 
     for i in range(2,n+1):
@@ -34,10 +41,10 @@ def fibonacci_series2(n):
     return dp[n]
 
 
-# Bottom-up No-memory DP
+# 4. Bottom-up No-memory DP
 # Time-Complexity(O(n))
 # Space-Complexity(O(1))-> No additional space
-def fibonacci_series3(n):
+def fibonacci_series4(n):
     prev1 = 1
     prev2 = 0
     curr = n
@@ -52,3 +59,4 @@ def fibonacci_series3(n):
 print(fibonacci_series1(7))
 print(fibonacci_series2(7))
 print(fibonacci_series3(7))
+print(fibonacci_series4(7))
