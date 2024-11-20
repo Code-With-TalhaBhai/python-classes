@@ -16,14 +16,11 @@ def fibonacci_series2(n):
     def fibonacci(n):
         if n == 0 or n == 1:
             return n
-        
         if n in memoize_dict:
             return memoize_dict[n]
     
         memoize_dict[n] = fibonacci(n-1) + fibonacci(n-2)
         return memoize_dict[n]
-
-
     return fibonacci(n)
 
 

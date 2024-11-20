@@ -40,6 +40,9 @@ def count_number_hop3(n):
 
 # Bottom-Up(Tabulation)
 def count_number_hop4(n):
+    if n <= 2:
+        return n
+
     tabulation = []
     for i in range(n+1):
         tabulation.append(i)
@@ -55,7 +58,7 @@ def count_number_hop4(n):
 
 # space-optimized
 def count_number_hop5(n):
-    if n < 3:
+    if n <= 2:
         return n
 
     curr = 4
@@ -81,5 +84,6 @@ print(count_number_hop2(n))
 # DP
 print(count_number_hop3(n))
 print(count_number_hop4(n))
+print(count_number_hop4(1))
 print(count_number_hop5(n))
 
