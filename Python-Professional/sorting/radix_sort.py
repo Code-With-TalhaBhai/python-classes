@@ -20,8 +20,6 @@ def counting_sort(arr,exp):
     for i in range(n-1,-1,-1):
         index = (arr[i] // exp) % 10
         output_arr[count_arr[index]-1] = arr[i]
-        # index = count_arr[(arr[i]//exp)%10]-1
-        # output_arr[index] = arr[i]
         count_arr[index] -= 1
 
 
