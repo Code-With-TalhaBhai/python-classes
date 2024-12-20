@@ -1,4 +1,9 @@
+# Time-Complexity: O(d * (n + b)), where d is the number of digits, n is the number of elements, and b is the base of number system being used
+# Space-Complexity: O(n + b) where n is the number of elements and b is the base of number system
 
+
+
+# For large integers and Strings
 arr = [170,24,75,3,90,802,24,2,66]
 
 
