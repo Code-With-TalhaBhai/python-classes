@@ -4,12 +4,30 @@
 def house_robber1(nums):
     n = len(nums)
 
+    #1st way 
     def rob(i):
         if i < 0:
             return 0
 
         return max(nums[i]+rob(i-2),rob(i-1))
     return rob(n-1)
+
+    # 2nd way
+    # def rob(i):
+    #     if i >= n:
+    #         return 0
+        
+    #     return max(nums[i]+rob(i+2),rob(i+1))
+    # return rob(0)
+
+    # 3rd way
+    # def rob(i,amt):
+    #     if i >= n:
+    #         return amt
+        
+    #     return max(rob(i+2,nums[i]+amt),rob(i+1,amt))
+    # return rob(0,0)
+
 
 
 def house_robber2(nums):
@@ -26,6 +44,20 @@ def house_robber2(nums):
         memo[i] = max(nums[i]+rob(i-2),rob(i-1))
         return memo[i]
     return rob(n-1)
+
+    # 2nd way
+    # memo = {
+    #     n : 0,
+    #     n+1 : 0
+    # }
+
+    # def rob(i):
+    #     if i in memo:
+    #         return memo[i]
+        
+    #     memo[i] = max(nums[i]+rob(i+2),rob(i+1))
+    #     return memo[i]
+    # return rob(0)
 
 
 def house_robber3(nums):
