@@ -81,3 +81,8 @@ print(rob(nums3,0,0))
 print(rob1(nums1))
 print(rob1(nums2))
 print(rob1(nums3))
+
+print(rob1(nums1))
+print(rob1(nums2))
+print(rob1(nums3))
+

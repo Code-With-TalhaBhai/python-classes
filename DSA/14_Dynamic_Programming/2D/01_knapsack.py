@@ -1,6 +1,6 @@
 
 
-def knapsack01(cap,val,weight):
+def knapsack01_a(cap,val,weight):
     maxi = [0]
     n = len(val)
 
@@ -56,6 +56,21 @@ def knapsack01(cap,val,weight):
 
 
 
+def knapsack01_b(capacity,val,wt):
+    n = len(val)
+    dp = [[0 for i in range(capacity+1)] for j in range(n+1)]
+
+
+    for i in range(1,n+1):
+        for cap in range(1,capacity+1):
+            # if cap == 0 or i == 0:
+                # dp[i][cap] = 0
+                # continue
+            if cap >= wt[i-1]:
+                dp[i][cap] = max(val[i-1] + dp[i-1][cap-wt[i-1]],dp[i-1][cap])
+            else:
+                dp[i][cap] = dp[i-1][cap]
+    return dp[n][capacity]
 
 
 capacity = 4
@@ -72,6 +87,15 @@ val3 = [1,2,3]
 wt3 = [4,5,6]
 
 # Brute Force - Backtracking
-print(knapsack01(capacity,val,wt))
-print(knapsack01(capacity2,val2,wt2))
-print(knapsack01(capacity3,val3,wt3))
+print('With Recurrsion')
+print(knapsack01_a(capacity,val,wt))
+print(knapsack01_a(capacity2,val2,wt2))
+print(knapsack01_a(capacity3,val3,wt3))
+
+
+
+# Tabulation
+print('With Tabulation')
+print(knapsack01_b(capacity,val,wt))
+print(knapsack01_b(capacity2,val2,wt2))
+print(knapsack01_b(capacity3,val3,wt3))
