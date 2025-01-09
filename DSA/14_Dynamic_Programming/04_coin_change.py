@@ -51,27 +51,31 @@ def min_coin_change1(coins,amount):
     return -1 if total_coin_changes == float("inf") else total_coin_changes
 
 
+    # def coin_change4
+
 
 def min_coin_change2(coins,amount):
     n = len(coins)
-    total_num = [float('inf')]
-    memo = {0:0}
+    
+    memo = [[-1 for i in range(amount+1)] for i in range(n+1)]
 
-    def coin_change(rem):
-        if rem in memo:
-            return memo[rem]
+    def coin_change(i,amt):
+        if i == 0 or amt < 0:
+            return 0
         
-        coin_change(rem-1)
+        if coins[i-1] > amt:
+            return coin_change(i-1,amt)
 
-        for coin in coins:
-            val = rem-coin
-            if val >= 0 and val in memo:
-                memo[rem] = memo[val]+1
 
-    coin_change(amount)
-    if amount in memo:
-        return memo[amount]
-    return -1
+        # memo[i][amt] = min(1+coin_change(i,amt-coins[i-1]),coin_change(i-1,amt))
+        # return memo[i][amt]
+        return max(1+coin_change(i,amt-coins[i-1]),coin_change(i-1,amt))
+
+    # coin_change(n,amount)
+    # return memo[n][amount]
+
+    return coin_change(n,amount)
+
 
 
 
