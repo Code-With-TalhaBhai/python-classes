@@ -37,13 +37,38 @@ def countSquares2(matrix) -> int:
     for r in range(1,rows+1):
         for c in range(1,cols+1):
             if matrix[r-1][c-1] == 1:
-                dp[r][c] = 1
-
-                if dp[r][c-1] > 0 and dp[r-1][c] > 0 and dp[r-1][c-1] > 0:
-                    dp[r][c] += dp[r-1][c-1] 
+                # dp[r][c] = 1
+                # if dp[r][c-1] > 0 and dp[r-1][c] > 0 and dp[r-1][c-1] > 0:
+                #     dp[r][c] += min(dp[r][c-1],dp[r-1][c],dp[r-1][c-1])
+                dp[r][c] = 1 + min(
+                    dp[r-1][c],
+                    dp[r][c-1],
+                    dp[r-1][c-1]
+                )
             res += dp[r][c]
+    
+       
+    # Optimization   
+    # prev_dp = [0 for i in range(cols+1)]
+    # curr_dp = [0 for i in range(cols+1)]
 
-    return res        
+    # for r in range(1,rows+1):
+    #     for c in range(1,cols+1):
+    #         if matrix[r-1][c-1] == 1:
+    #             curr_dp[c] = 1 + min(
+    #                 curr_dp[c-1],
+    #                 prev_dp[c],
+    #                 prev_dp[c-1]
+    #             )
+            
+    #         res += curr_dp[c]
+    #         prev_dp = curr_dp.copy()
+
+    # print(prev_dp)
+    # print(curr_dp)
+
+
+    return res
             
 
 
