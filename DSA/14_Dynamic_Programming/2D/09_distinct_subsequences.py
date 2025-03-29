@@ -44,7 +44,8 @@ def distinct_subsequences2(s,t):
         
 
 def distinct_subsequences3(s,t):
-
+    m = len(s)
+    n = len(t)
 
     # pat can't appear as a subsequence
     # in txt
@@ -52,31 +53,45 @@ def distinct_subsequences3(s,t):
         return 0
 
     # Create a 2D list initialized with 0
-    dp = [[0] * (len(s) + 1) for _ in range(len(t) + 1)]
+    dp = [[0] * (m + 1) for _ in range(n + 1)]
 
     # Initializing first row with all 1s. An empty string
     # is a subsequence of all.
-    for j in range(len(s) + 1):
+    for j in range(m + 1):
         dp[0][j] = 1
 
     # Fill mat[][] in bottom-up manner
-    for i in range(1, len(t) + 1):
-        for j in range(1, len(s) + 1):
+    # for i in range(1, len(t) + 1):
+    #     for j in range(1, len(s) + 1):
           
-            # If last characters don't match, then value
-            # is the same as the value without the last character in txt.
-            if t[i - 1] != s[j - 1]:
-                dp[i][j] = dp[i][j - 1]
-            else:
+    #         # If last characters don't match, then value
+    #         # is the same as the value without the last character in txt.
+    #         if t[i - 1] != s[j - 1]:
+    #             dp[i][j] = dp[i][j - 1]
+    #         else:
               
-                # Value is obtained considering two cases:
-                # a) All substrings without last character in txt
-                # b) All substrings without last characters in both.
-                dp[i][j] = (dp[i][j - 1] + dp[i - 1][j - 1])
-                
+    #             # Value is obtained considering two cases:
+    #             # a) All substrings without last character in txt
+    #             # b) All substrings without last characters in both.
+    #             dp[i][j] = (dp[i][j - 1] + dp[i - 1][j - 1])
+
+
                 
     # print(dp)
-    return dp[len(t)][len(s)]
+    for i in range(1,n+1):
+        # 1st way
+        # for j in range(1,m+1):
+        #     if s[j-1] == t[i-1]:
+        #         dp[i][j] = dp[i-1][j-1] + dp[i][j-1]
+        #     else:
+        #         dp[i][j] = dp[i][j-1]
+
+        # 2nd way
+        for j in range(1,m+1):
+            dp[i][j] = dp[i][j-1]
+            if s[j-1] == t[i-1]:
+                dp[i][j] += dp[i-1][j-1]
+    return dp[n][m]
 
 
 
@@ -99,20 +114,3 @@ print(distinct_subsequences3(s1,t1))
 print(distinct_subsequences3(s2,t2))
 
 
-
-# class Solution:
-#     def numDistinct(self, s: str, t: str) -> int:
-#         m, n = len(s), len(t)
-#         dp = [[0] * (n + 1) for _ in range(m + 1)]
-
-#         for i in range(m + 1):
-#             dp[i][n] = 1
-
-#         for sIndex in range(m - 1, -1, -1):
-#             for tIndex in range(n - 1, -1, -1):
-#                 dp[sIndex][tIndex] = dp[sIndex + 1][tIndex]
-
-#                 if s[sIndex] == t[tIndex]:
-#                     dp[sIndex][tIndex] += dp[sIndex + 1][tIndex + 1]
-
-#         return dp[0][0]

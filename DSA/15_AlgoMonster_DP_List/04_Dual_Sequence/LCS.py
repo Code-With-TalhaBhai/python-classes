@@ -28,6 +28,7 @@ def LCS2(text1,text2):
     n = len(text2)
     dp = [[0 for i in range(m+1)] for i in range(n+1)]
 
+
     for i in range(1,n+1):
         for j in range(1,m+1):
             if text1[j-1] == text2[i-1]:
@@ -37,9 +38,9 @@ def LCS2(text1,text2):
     return dp[n][m]
 
 
+
 text1 = "abcde"
 text2 = "ace"
-
 
 text3 = "abc"
 text4 = "def"
