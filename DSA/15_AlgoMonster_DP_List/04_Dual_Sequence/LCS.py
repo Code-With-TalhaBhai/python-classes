@@ -10,7 +10,7 @@ def LCS1(text1,text2):
         if i == m or j == n:
             return 0
         
-        if i in memo:
+        if (i,j) in memo:
             return memo[(i,j)]
         
         if text1[i] == text2[j]:
