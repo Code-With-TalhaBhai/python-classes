@@ -5,7 +5,8 @@ n = n >> 1 == n/2 -> binary
 
 
 #### Square:
-Number which is square of 2(16,8,32) has only one set-bit. And, the prev number before square(15,7,31) has all set-bits
+Number which is square of 2(16,8,32) has only one set-bit. And, the prev number before square(15,7,31) has all set-bits. The square of n is equal to 1 << n. <br>
+`2 ** n = 1 << n`
 
 
 #### Consecutive-numbers:

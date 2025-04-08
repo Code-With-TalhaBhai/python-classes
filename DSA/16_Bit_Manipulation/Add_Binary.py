@@ -50,9 +50,10 @@ def add_binary2(a,b):
     b = int(b,2)
 
 
+
     while b != 0:
         carry = a & b
-        a = a ^ b
+        a = a ^ b #(Without Carry)
         b = carry << 1
     return bin(a)[2:]
 
