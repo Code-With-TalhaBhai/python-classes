@@ -1,5 +1,5 @@
 
-### Divide:
+### Divide(Right-Shift):
 ```
 n = (n / 2) -> Dividing by Decimal Operators
 n = n >> 1 == n/2 -> Dividing by bitwise Operators
@@ -10,6 +10,12 @@ x / 2 ===== x >> 1
 x / 4 ===== x >> 2 
 x / 8 ===== x >> 3 
 x / 2 ^ k ====== x >> k
+```
+
+### Multiply(Left-Shift)
+```
+n = n * 2
+n = n << 1
 ```
 
 
