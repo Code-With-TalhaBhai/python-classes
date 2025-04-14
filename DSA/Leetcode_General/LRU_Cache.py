@@ -1,9 +1,6 @@
 
 
 
-from turtle import update
-
-
 class Node:
     def __init__(self,key,data=0) -> None:
         self.head : Node | None = None
