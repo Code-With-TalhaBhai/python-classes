@@ -3,18 +3,20 @@
 
 def maxScore(cardPoints, k: int) -> int:
     profit = 0
-    for i in range(k+1):
+    n = len(cardPoints)
+    for i in range(k):
         profit += cardPoints[i]
 
-    for i in range(k+1,len(cardPoints)):
-        profit_to_add = cardPoints[i]
-        j = 1
-        while j <= k:
-            profit -= cardPoints[i-j]
-            profit += profit_to_add
-            j += 1
+    if k == n:
+        return profit
 
-    return profit
+    max_profit = profit
+    for i in range(1,k+1):
+        profit -= cardPoints[k-i]
+        profit += cardPoints[n-i]
+        max_profit = max(max_profit,profit)
+
+    return max_profit
 
 
 
