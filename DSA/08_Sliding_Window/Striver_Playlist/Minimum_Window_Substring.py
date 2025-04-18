@@ -53,7 +53,8 @@ def minWindow2(s: str, t: str) -> str:
             cnt += 1
 
 
-        while l < len(s) and cnt > len(t) - 1:
+        # while l < len(s) and cnt > len(t) - 1:
+        while l < len(s) and cnt == len(t):
             if min_len > r - l + 1:
                 start_idx = l
                 min_len = r - l + 1
@@ -66,7 +67,7 @@ def minWindow2(s: str, t: str) -> str:
     if start_idx == -1:
         return ''
     
-    final_str = s[start_idx:start_idx+min_len+1]
+    final_str = s[start_idx:start_idx+min_len]
     return final_str
        
 

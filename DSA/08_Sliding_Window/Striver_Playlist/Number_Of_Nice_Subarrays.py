@@ -28,7 +28,6 @@ def no_of_nice_subarrays2(nums,k):
                 sum -= nums[l] % 2
                 l += 1
             cnt += r - l + 1                
-
         return cnt
 
     return nice_subarrays(k) - nice_subarrays(k-1)
