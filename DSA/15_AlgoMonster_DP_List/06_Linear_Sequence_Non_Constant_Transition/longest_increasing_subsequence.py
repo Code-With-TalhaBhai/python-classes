@@ -25,15 +25,19 @@ def LIS1(nums):
 
 def LIS2(nums):
     n = len(nums)
-    dp = [0] * (n+1)
-    dp[1] = 1
+    dp = [0] * (n)
+    dp[0] = 1
+    # max_lis = 1
 
-    for i in range(2,n+1):
-    # for i in range(1,n):
-        if nums[i-1] > nums[i-2]:
-            dp[i] += 1
-        dp[i] += dp[i-1]
-    return dp[n]
+    for i in range(1,n):
+        dp[i] = 1
+
+        for j in range(i):
+            if nums[j] < nums[i]:
+                dp[i] = max(dp[i],dp[j]+1)
+        # max_lis = max(max_lis,dp[i])
+    # return max_lis
+    return max(dp)
 
 
 
@@ -69,6 +73,7 @@ nums2 = [0,1,0,3,2,3]
 nums3 = [7,7,7,7,7,7,7]
 nums4 = [4,10,4,3,8,9]
 nums5 = [10,9,2,5,3,4]
+nums6 = [3,5,6,2,5,4,19,5,6,7,12]
 
 
 print('With Recurrsion')
@@ -77,16 +82,18 @@ print(LIS1(nums2))
 print(LIS1(nums3))
 print(LIS1(nums4))
 print(LIS1(nums5))
+print(LIS1(nums6))
 print('With Dynammic Programming')
 print(LIS2(nums1))
 print(LIS2(nums2))
 print(LIS2(nums3))
 print(LIS2(nums4))
 print(LIS2(nums5))
+print(LIS2(nums6))
 print('With Binary Search')
 print(LIS3(nums1))
 print(LIS3(nums2))
 print(LIS3(nums3))
 print(LIS3(nums4))
 print(LIS3(nums5))
-print(LIS3([3,5,6,2,5,4,19,5,6,7,12]))
+print(LIS3(nums6))

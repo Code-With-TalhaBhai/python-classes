@@ -7,6 +7,7 @@ def permutation1(arr):
     def find_permutation(idx):
         if idx >= len(arr):
             final.append(arr.copy())
+            return
 
         for i in range(idx,len(arr)):
             arr[i],arr[idx] = arr[idx],arr[i]
