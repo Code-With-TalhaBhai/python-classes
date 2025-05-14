@@ -16,6 +16,16 @@ matrix2 = [
 ]
 
 
+# matrix1 = [
+#     [1,1],
+#     [1,0]
+# ]
+
+# matrix2 = [
+#     [34],
+#     [21]
+# ]
+
 
 matrix3 = []
 
@@ -26,11 +36,10 @@ def multiply(mat1,mat2,mat3):
         mat3.append([])
         for j in range(len(mat2[0])):
             ans = 0
-            for k in range(len(mat2[0])):
-                for k in range(len(mat1)):
-                    ...
-                ans = mat1[0]
-                mat3[i].append(ans)
+            for k in range(len(mat1[0])):
+            # for k in range(len(mat2)):
+                ans += mat1[i][k] * mat2[k][j]
+            mat3[i].append(ans)
     return mat3
 
 
