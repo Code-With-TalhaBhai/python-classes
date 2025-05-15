@@ -7,12 +7,16 @@ def unbounded_knapsack(profit,weight,total_capacity):
 
     for wt in range(1,total_items+1):
         for curr_cap in range(1,total_capacity+1):
-            if curr_cap >= weight[wt-1]:
-                dp[wt][curr_cap] = max(dp[wt][curr_cap - weight[wt-1]] + profit[wt-1], dp[wt-1][curr_cap])
-            else:
-                dp[wt][curr_cap] = dp[wt-1][curr_cap]
-            
+            # if curr_cap >= weight[wt-1]:
+            #     dp[wt][curr_cap] = max(dp[wt][curr_cap - weight[wt-1]] + profit[wt-1], dp[wt-1][curr_cap])
+            # else:
+            #     dp[wt][curr_cap] = dp[wt-1][curr_cap]
 
+            take = 0
+            if curr_cap >= weight[wt-1]:
+                take = dp[wt][curr_cap-weight[wt-1]] + profit[wt-1]
+            no_take = dp[wt-1][curr_cap]
+            dp[wt][curr_cap] = max(take,no_take)
     return dp[total_items][total_capacity]
 
 profit = [4,7,6]

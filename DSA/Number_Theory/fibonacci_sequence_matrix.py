@@ -2,8 +2,7 @@
 
 # To Find fibonacci_sequence through matrix, we do:
 # 
-# [[f(n)],[f(n-1)]] = [[1,1],[1,0]] * [[f(n-1)],[f(n-2)]] 
-
+# [f(n),f(n-1)] = [[1,1],[1,0]] * [f(n-1),f(n-2)] 
 
 
 T = [
@@ -11,9 +10,9 @@ T = [
     [1,0]
 ]
 
-matrix = [
-    [34], # f(n-1)->f(9)
-    [21]  # f(n-2)->f(8)
+fib_matrix = [
+    [0], # f(n-1)->f(9)
+    [1]  # f(n-2)->f(8)
 ]
 
 
@@ -29,13 +28,27 @@ def matrix_multiply(mat1,mat2):
                 ans += mat1[i][k] * mat2[k][j]
             mat3[i].append(ans)
     return mat3 # whole matrix
-    # return mat3[0][0]
-print(matrix_multiply(T,matrix))
+# print(matrix_multiply(T,matrix))
 
 
-print('Using matrix_exponentiation is to find fibonacci_sequence')
+print('Using matrix_multiplication is to find fibonacci_sequence')
+# [f(n),f(n-1)] = T * [f(n-1),f(n-2)],where T is
+# T = [
+#   [1, 1],
+#   [1, 0]
+# ]
 
-# [[f(n)],[f(n-1)]] = (T^n-1) * [[f(1),f(0)]],where T is
+def fib_multiply(T,fib_matrix,n):
+    for i in range(n):
+        fib_matrix = matrix_multiply(T,fib_matrix)
+    return fib_matrix[0][0]
+print(fib_multiply(T,fib_matrix,10))
+
+
+
+
+print('Using fast_exponentiation is to find fibonacci_sequence')
+# [f(n),f(n-1)] = (T^n-1) * [f(1),f(0)],where T is
 # T = [
 #   [1, 1],
 #   [1, 0]
