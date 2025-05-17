@@ -20,7 +20,12 @@ def lengthAfterTransformations1(s,t,nums):
 
 
 def lengthAfterTransformations2(s,t,nums):
-    ...
+    n = len(nums)
+    T = [[0 for i in range(n)] for i in range(n)]
+
+    for i in range(n):
+        for j in range(n):
+            ...
 
 
 
